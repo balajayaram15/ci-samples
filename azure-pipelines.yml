@@ -14,8 +14,7 @@ steps:
   displayName: 'Pull katalon studio images'
 - script: docker run -t --rm -v "$(pwd)":/katalon/katalon/source katalonstudio/katalon katalon-execute.sh -apiKey="24a81f22-b024-47ed-ae1a-7394a8d24143" -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"
   displayName: 'Runnning Katalon TS_RegressionTest'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    publishLocation: 'filepath'
-    fileSharePath: 'Junit Report'
+- task: PublishPipelineArtifact@0	
+  inputs:	  
+    artifactName: 'JUnit Report' 	  
+    targetPath: report/
